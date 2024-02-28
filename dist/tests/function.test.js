@@ -53,4 +53,19 @@ describe("Function", function () {
         expect(callMe(10)).toBe(100);
         expect(callMe("irfan")).toBe("IRFAN");
     });
+    it("should function as parameter", () => {
+        function sayHello(name, filter) {
+            return `Hello ${filter(name)}`;
+        }
+        function toUpper(name) {
+            return name.toUpperCase();
+        }
+        expect(sayHello("Irfan", toUpper)).toBe("Hello IRFAN");
+        //  Anonymous Function
+        expect(sayHello("Budi", function (name) {
+            return name.toUpperCase();
+        })).toBe("Hello BUDI");
+        // Arrow Function
+        expect(sayHello("Zidni", (name) => name.toUpperCase())).toBe("Hello ZIDNI");
+    });
 });
